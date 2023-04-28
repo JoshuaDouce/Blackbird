@@ -1,4 +1,6 @@
-﻿namespace Blackbird.Domain
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Blackbird.Domain.Entities
 {
     public class Product
     {
@@ -8,16 +10,22 @@
         public string Description { get; init; } = "";
         public string ImageUrl { get; init; } = "";
 
+        [SetsRequiredMembers]
         public Product(int id, string name, decimal price, string description = "", string imageUrl = "")
         {
-            if (id > 0)
+            if (id <= 0)
             {
-                throw new ArgumentException(nameof(id));
+                throw new ArgumentException(null, nameof(id));
             }
 
-            if(price < 0)
+            if (price < 0)
             {
-                throw new ArgumentNullException(nameof(price));
+                throw new ArgumentException(null, nameof(price));
+            }
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException(null, nameof(name));
             }
 
             Id = id;

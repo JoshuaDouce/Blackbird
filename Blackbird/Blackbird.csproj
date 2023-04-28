@@ -56,7 +56,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Blackbird.Application\Blackbird.Application.csproj" />
       <ProjectReference Include="..\Blackbird.Domain\Blackbird.Domain.csproj" />
-      <ProjectReference Include="..\Blackbird.Infrastructure\Blackbird.Infrastructure.csproj" />
+      <ProjectReference Include="..\Blackbird.Infrastructure\Blackbird.Persistence.csproj" />
     </ItemGroup>
 
 </Project>
