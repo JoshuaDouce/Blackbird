@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Blackbird.Interfaces;
+using Blackbird.Services;
+using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 namespace Blackbird;
 
@@ -15,9 +18,23 @@ public static class MauiProgram
 			});
 
 		builder.Services.AddMauiBlazorWebView();
+        builder.Services.AddSingleton<IProductService, ProductService>();
+
+        // Configure the HttpClient for your Web API
+#if DEBUG
+        builder.Services.AddTransient<HttpMessageHandler>(provider => new UnsafeHttpClientHandler());
+#else
+        builder.Services.AddTransient<HttpMessageHandler>(provider => new HttpClientHandler());
+#endif
+
+        builder.Services.AddTransient<IProductService, ProductService>();
+        builder.Services.AddSingleton(x => new HttpClient(x.GetRequiredService<HttpMessageHandler>())
+        {
+            BaseAddress = new Uri("https://192.168.0.15:7104")
+        });
 
 #if DEBUG
-		builder.Services.AddBlazorWebViewDeveloperTools();
+        builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
 
