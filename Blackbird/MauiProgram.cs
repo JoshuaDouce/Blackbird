@@ -1,7 +1,7 @@
 ﻿using Blackbird.Interfaces;
 using Blackbird.Services;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics;
+using MudBlazor.Services;
 
 namespace Blackbird;
 
@@ -18,6 +18,7 @@ public static class MauiProgram
 			});
 
 		builder.Services.AddMauiBlazorWebView();
+        builder.Services.AddMudServices();
         builder.Services.AddSingleton<IProductService, ProductService>();
 
         // Configure the HttpClient for your Web API

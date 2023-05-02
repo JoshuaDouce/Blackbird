@@ -1,46 +1,46 @@
 @page "/products"
 @using Blackbird.Domain.Entities
 @using Blackbird.Interfaces;
+@using MudBlazor;
 @inject IProductService ProductService
 
-<h1>Product List</h1>
+<h3>Products</h3>
 
 @if (products == null)
 {
-    <p>Loading products...</p>
+    <MudCircularProgress />
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>Image URL</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var product in products)
-            {
-                <tr>
-                    <td>@product.Id</td>
-                    <td>@product.Name</td>
-                    <td>@product.Price.ToString("C")</td>
-                    <td>@product.Description</td>
-                    <td>@product.ImageUrl</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <MudGrid>
+        @foreach (var product in products)
+        {
+            <MudItem xs="12" sm="6" md="4" lg="3">
+                <MudCard>
+                    <MudCardMedia>
+                        <MudImg Src="@product.ImageUrl" Alt="@product.Name" />
+                    </MudCardMedia>
+                    <MudCardContent>
+                        <MudText Typo="Typo.h6">@product.Name</MudText>
+                        <MudText Typo="Typo.body1">@product.Description</MudText>
+                        <MudText Typo="Typo.body2">$@product.Price.ToString("F2")</MudText>
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudButton Variant="Variant.Text">View Details</MudButton>
+                        <MudButton Variant="Variant.Text">Add to Cart</MudButton>
+                    </MudCardActions>
+                </MudCard>
+            </MudItem>
+        }
+    </MudGrid>
 }
 
+
 @code {
-    private IEnumerable<Product> products;
+    private List<Product> products;
 
     protected override async Task OnInitializedAsync()
     {
-        products = await ProductService.GetAllProductsAsync();
+        products = (await ProductService.GetAllProductsAsync()).ToList();
     }
 }
