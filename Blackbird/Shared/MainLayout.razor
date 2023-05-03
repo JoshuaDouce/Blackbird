@@ -1,11 +1,23 @@
 ﻿@inherits LayoutComponentBase
+@using MudBlazor
+@using Blackbird.Themes
 
-<MudThemeProvider />
+
+
+<MudThemeProvider Theme="BlackbirdTheme.Create()" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
-<div class="page">
-    <article class="content px-4">
+<MudAppBar Color="Color.Primary" Elevation="1">
+    <MudText Typo="Typo.h6">@AppName</MudText>
+</MudAppBar>
+
+<MudContainer Class="mt-16">
+    <MudItem xs="12">
         @Body
-    </article>
-</div>
+    </MudItem>
+</MudContainer>
+
+@code {
+    private string AppName => "Blackbird";
+}

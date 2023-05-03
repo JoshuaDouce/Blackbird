@@ -1,46 +1,47 @@
-@page "/products"
 @using Blackbird.Domain.Entities
 @using Blackbird.Interfaces;
 @using MudBlazor;
 @inject IProductService ProductService
 
-<h3>Products</h3>
-
-@if (products == null)
-{
-    <MudCircularProgress />
-}
-else
-{
+<MudContainer>
     <MudGrid>
-        @foreach (var product in products)
+        @if (Products == null)
         {
-            <MudItem xs="12" sm="6" md="4" lg="3">
-                <MudCard>
-                    <MudCardMedia>
-                        <MudImg Src="@product.ImageUrl" Alt="@product.Name" />
-                    </MudCardMedia>
-                    <MudCardContent>
-                        <MudText Typo="Typo.h6">@product.Name</MudText>
-                        <MudText Typo="Typo.body1">@product.Description</MudText>
-                        <MudText Typo="Typo.body2">$@product.Price.ToString("F2")</MudText>
-                    </MudCardContent>
-                    <MudCardActions>
-                        <MudButton Variant="Variant.Text">View Details</MudButton>
-                        <MudButton Variant="Variant.Text">Add to Cart</MudButton>
-                    </MudCardActions>
-                </MudCard>
-            </MudItem>
+            <MudProgressCircular />
+        }
+        else
+        {
+            @foreach (var product in Products)
+            {
+                <MudItem xs="12" sm="6" md="4" lg="3">
+                    <MudCard Elevation="5" Style="width: 100%; margin-bottom: 16px;">
+                        <MudCardMedia>
+                            <MudText Typo="Typo.h6">@product.Name</MudText>
+                        </MudCardMedia>
+                        <MudCardContent>
+                            <MudText Typo="Typo.body1" Style="@($"color: {(product.Price < 10 ? "green" : "blue")};")">Price: @product.Price</MudText>
+                            <MudText Typo="Typo.body2">@product.Description</MudText>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Variant="Variant.Outlined" OnClick="@(() => ShowDetails(product))">View Details</MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+            }
         }
     </MudGrid>
-}
-
+</MudContainer>
 
 @code {
-    private List<Product> products;
+    private List<Product> Products { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        products = (await ProductService.GetAllProductsAsync()).ToList();
+        Products = (await ProductService.GetAllProductsAsync()).ToList();
+    }
+
+    private void ShowDetails(Product product)
+    {
+        // Implement the method to show product details
     }
 }
