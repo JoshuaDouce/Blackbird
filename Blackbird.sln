@@ -30,8 +30,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackbird.Application.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackbird.Application.Integration.Tests", "Blackbird.Application.Integration.Tests\Blackbird.Application.Integration.Tests.csproj", "{45CE7742-2D45-4291-8A36-E25C8C3538A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackbird.UI.Tests", "Blackbird.UI.Tests\Blackbird.UI.Tests.csproj", "{A450310F-6873-4D8A-AD15-DE47AD3C0289}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,10 +70,6 @@ Global
 		{45CE7742-2D45-4291-8A36-E25C8C3538A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45CE7742-2D45-4291-8A36-E25C8C3538A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45CE7742-2D45-4291-8A36-E25C8C3538A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A450310F-6873-4D8A-AD15-DE47AD3C0289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A450310F-6873-4D8A-AD15-DE47AD3C0289}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A450310F-6873-4D8A-AD15-DE47AD3C0289}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A450310F-6873-4D8A-AD15-DE47AD3C0289}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,7 +87,6 @@ Global
 		{14DD1619-6439-4E40-AE06-4313D84C9240} = {122D2916-A143-4E09-9F11-3F3BC1B5F252}
 		{A91A4397-1C75-4C7A-8847-81447E21894E} = {04A93AA1-49CA-4CEF-AC0E-D25BC6FBCAED}
 		{45CE7742-2D45-4291-8A36-E25C8C3538A6} = {04A93AA1-49CA-4CEF-AC0E-D25BC6FBCAED}
-		{A450310F-6873-4D8A-AD15-DE47AD3C0289} = {04A93AA1-49CA-4CEF-AC0E-D25BC6FBCAED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		        SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
