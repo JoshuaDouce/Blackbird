@@ -1,6 +1,6 @@
 ﻿using Blackbird.Domain.Entities;
 
-namespace Blackbird.Interfaces
+namespace Blackbird.RazorComponents.Interfaces
 {
     public interface IProductService
     {

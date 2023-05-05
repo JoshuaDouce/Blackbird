@@ -52,17 +52,14 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
-        <PackageReference Include="MudBlazor" Version="6.2.2" />
+        <PackageReference Include="MudBlazor" Version="6.2.3" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Blackbird.Application\Blackbird.Application.csproj" />
       <ProjectReference Include="..\Blackbird.Domain\Blackbird.Domain.csproj" />
       <ProjectReference Include="..\Blackbird.Infrastructure\Blackbird.Persistence.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Components\" />
+      <ProjectReference Include="..\Blackbird.RazorComponents\Blackbird.RazorComponents.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using Blackbird.Interfaces;
+﻿using Blackbird.RazorComponents.Interfaces;
 using Blackbird.Services;
 using Microsoft.Extensions.Logging;
 using MudBlazor.Services;

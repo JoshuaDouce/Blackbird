@@ -26,9 +26,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{122D2916-A14
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blackbird.WebApi", "Blackbird.WebApi\Blackbird.WebApi.csproj", "{14DD1619-6439-4E40-AE06-4313D84C9240}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackbird.Application.Tests", "Blackbird.Application.Tests\Blackbird.Application.Tests.csproj", "{A91A4397-1C75-4C7A-8847-81447E21894E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blackbird.Application.Tests", "Blackbird.Application.Tests\Blackbird.Application.Tests.csproj", "{A91A4397-1C75-4C7A-8847-81447E21894E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackbird.Application.Integration.Tests", "Blackbird.Application.Integration.Tests\Blackbird.Application.Integration.Tests.csproj", "{45CE7742-2D45-4291-8A36-E25C8C3538A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blackbird.Application.Integration.Tests", "Blackbird.Application.Integration.Tests\Blackbird.Application.Integration.Tests.csproj", "{45CE7742-2D45-4291-8A36-E25C8C3538A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackbird.RazorComponents", "Blackbird.RazorComponents\Blackbird.RazorComponents.csproj", "{F1471C47-2AE1-4909-9CBF-A077002DE350}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackbird.RazorComponents.Tests", "Blackbird.RazorComponents.Tests\Blackbird.RazorComponents.Tests.csproj", "{3927876B-398A-4B68-B9DB-019A3885E12F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +74,14 @@ Global
 		{45CE7742-2D45-4291-8A36-E25C8C3538A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45CE7742-2D45-4291-8A36-E25C8C3538A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45CE7742-2D45-4291-8A36-E25C8C3538A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1471C47-2AE1-4909-9CBF-A077002DE350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1471C47-2AE1-4909-9CBF-A077002DE350}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1471C47-2AE1-4909-9CBF-A077002DE350}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1471C47-2AE1-4909-9CBF-A077002DE350}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3927876B-398A-4B68-B9DB-019A3885E12F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3927876B-398A-4B68-B9DB-019A3885E12F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3927876B-398A-4B68-B9DB-019A3885E12F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3927876B-398A-4B68-B9DB-019A3885E12F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,9 +99,11 @@ Global
 		{14DD1619-6439-4E40-AE06-4313D84C9240} = {122D2916-A143-4E09-9F11-3F3BC1B5F252}
 		{A91A4397-1C75-4C7A-8847-81447E21894E} = {04A93AA1-49CA-4CEF-AC0E-D25BC6FBCAED}
 		{45CE7742-2D45-4291-8A36-E25C8C3538A6} = {04A93AA1-49CA-4CEF-AC0E-D25BC6FBCAED}
+		{F1471C47-2AE1-4909-9CBF-A077002DE350} = {4FB0E9DE-D08C-45D6-9A5A-AA8E9BCC3E64}
+		{3927876B-398A-4B68-B9DB-019A3885E12F} = {04A93AA1-49CA-4CEF-AC0E-D25BC6FBCAED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		        SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
 		SolutionGuid = {34E93D85-6C6B-48E7-AF8F-3989190860E2}
+		        SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
 	EndGlobalSection
 EndGlobal

@@ -1,5 +1,5 @@
 ﻿using Blackbird.Domain.Entities;
-using Blackbird.Interfaces;
+using Blackbird.RazorComponents.Interfaces;
 using System.Net.Http.Json;
 
 namespace Blackbird.Services
