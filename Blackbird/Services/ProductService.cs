@@ -1,4 +1,4 @@
-﻿using Blackbird.Domain.Entities;
+﻿using Blackbird.Application.Dtos;
 using Blackbird.RazorComponents.Interfaces;
 using System.Net.Http.Json;
 
@@ -13,9 +13,9 @@ namespace Blackbird.Services
             _httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        public async Task<IEnumerable<ProductDto>> GetAllProductsAsync()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<Product>>("products");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<ProductDto>>("products");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Blackbird.Domain.Entities;
+﻿using Blackbird.Application.Dtos;
 using Blackbird.RazorComponents.Interfaces;
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,18 +31,40 @@ namespace Blackbird.RazorComponents.Tests
             {
                 var product = GetTestProducts()[i];
                 Assert.Contains(product.Name, cards[i].Markup);
+                Assert.Contains(product.ProductId, cards[i].Markup);
                 Assert.Contains(product.Description, cards[i].Markup);
                 Assert.Contains($"{product.Price}", cards[i].Markup);
             }
         }
 
-        private static List<Product> GetTestProducts()
+        private static List<ProductDto> GetTestProducts()
         {
-            return new List<Product>
+            return new List<ProductDto>
             {
-                new Product(id : 1, name: "Product 1", price: 9.99m, description: "Description 1", imageUrl: "https://example.com/image1.jpg"),
-                new Product(id : 2, name: "Product 2", price: 19.99m, description: "Description 2", imageUrl: "https://example.com/image2.jpg"),
-                new Product(id : 3, name: "Product 3", price: 29.99m, description: "Description 3", imageUrl: "https://example.com/image3.jpg"),
+                new ProductDto
+                {
+                    ProductId = "Id",
+                    Name = "Name",
+                    Price = 10.99m,
+                    Description = "Description 1",
+                    ImageUrl = "https://example.com/image1.jpg"
+                },
+                new ProductDto
+                {
+                    ProductId = "Id 2",
+                    Name = "Name",
+                    Price = 10.99m,
+                    Description = "Description 2",
+                    ImageUrl = "https://example.com/image1.jpg"
+                },
+                new ProductDto
+                {
+                    ProductId = "Id 3",
+                    Name = "Name",
+                    Price = 10.99m,
+                    Description = "Description 3",
+                    ImageUrl = "https://example.com/image1.jpg"
+                },
             };
         }
     }

@@ -5,6 +5,7 @@ namespace Blackbird.Domain.Entities
     public class Product
     {
         public int Id { get; init; }
+        public required string ProductId { get; set; }
         public required string Name { get; init; }
         public decimal Price { get; init; }
         public string Description { get; init; } = "";
@@ -29,10 +30,15 @@ namespace Blackbird.Domain.Entities
             }
 
             Id = id;
+            ProductId = Guid.NewGuid().ToString();
             Name = name;
             Price = price;
             Description = description;
             ImageUrl = imageUrl;
+        }
+
+        public class Dto
+        {
         }
     }
 

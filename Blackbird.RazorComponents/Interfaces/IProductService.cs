@@ -1,9 +1,9 @@
-﻿using Blackbird.Domain.Entities;
+﻿using Blackbird.Application.Dtos;
 
 namespace Blackbird.RazorComponents.Interfaces
 {
     public interface IProductService
     {
-        Task<IEnumerable<Product>> GetAllProductsAsync();
+        Task<IEnumerable<ProductDto>> GetAllProductsAsync();
     }
 }
