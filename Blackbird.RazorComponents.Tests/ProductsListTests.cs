@@ -31,7 +31,7 @@ namespace Blackbird.RazorComponents.Tests
             {
                 var product = GetTestProducts()[i];
                 Assert.Contains(product.Name, cards[i].Markup);
-                Assert.Contains(product.ProductId, cards[i].Markup);
+                Assert.Contains(product.ImageUrl, cards[i].Markup);
                 Assert.Contains(product.Description, cards[i].Markup);
                 Assert.Contains($"{product.Price}", cards[i].Markup);
             }

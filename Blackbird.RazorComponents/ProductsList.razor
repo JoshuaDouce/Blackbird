@@ -16,10 +16,9 @@
                 <MudItem xs="12" sm="6" md="4" lg="3">
                     <MudCard Elevation="5" Style="width: 100%; margin-bottom: 16px;">
                         <MudCardHeader>
-                            <MudText Typo="Typo.h6">@product.Name @product.ProductId</MudText>
+                            <MudText Typo="Typo.h6">@product.Name</MudText>
                         </MudCardHeader>
-                        <MudCardMedia>
-                        </MudCardMedia>
+                        <MudCardMedia Image="@($"{product.ImageUrl}")" />
                         <MudCardContent>
                             <MudText Typo="Typo.body1" Style="@($"color: {(product.Price < 10 ? "green" : "blue")};")">Price: @product.Price</MudText>
                             <MudText Typo="Typo.body2">@product.Description</MudText>
