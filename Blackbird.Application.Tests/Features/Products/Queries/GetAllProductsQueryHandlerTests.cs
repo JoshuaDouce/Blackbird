@@ -1,4 +1,6 @@
-﻿using Blackbird.Application.Dtos;
+﻿using AutoMapper;
+using Blackbird.Application.Automapper;
+using Blackbird.Application.Dtos;
 using Blackbird.Application.Features.Products.Queries;
 using Blackbird.Application.Infrastructure.Persistence;
 using Blackbird.Domain.Entities;
@@ -23,15 +25,15 @@ namespace Blackbird.Application.Tests.Features.Products.Queries
             var productRepository = Substitute.For<IProductRepository>();
             productRepository.GetAllAsync().Returns(products);
 
-            var handler = new GetAllProductsQueryHandler(productRepository);
+            var mappingConfig = new MapperConfiguration(mc => mc.AddProfile(new MappingProfile()));
+            var mapper = mappingConfig.CreateMapper();
+
+            var handler = new GetAllProductsQueryHandler(productRepository, mapper);
 
             // Act
             var result = await handler.Handle(new GetAllProductsQuery(), CancellationToken.None);
 
             // Assert
-            result.Should().NotBeNull();
-            result.Should().HaveCount(3);
-
             var expectedProducts = products.Select(p => new ProductDto
             {
                 ProductId = p.ProductId,

@@ -1,4 +1,6 @@
-﻿using Blackbird.Application.Features.Products.Queries;
+﻿using AutoMapper;
+using Blackbird.Application.Automapper;
+using Blackbird.Application.Features.Products.Queries;
 using Blackbird.Application.Infrastructure.Persistence;
 using Blackbird.Infrastructure;
 using FluentAssertions;
@@ -22,8 +24,11 @@ namespace Blackbird.Application.Integration.Tests.Features.Products.Queries
             using var scope = _fixture.ServiceProvider.CreateScope();
             var dbContext = scope.ServiceProvider.GetRequiredService<BlackbirdDbContext>();
 
+            var mappingConfig = new MapperConfiguration(mc => mc.AddProfile(new MappingProfile()));
+            var mapper = mappingConfig.CreateMapper();
+
             var productRepository = scope.ServiceProvider.GetRequiredService<IProductRepository>();
-            var handler = new GetAllProductsQueryHandler(productRepository);
+            var handler = new GetAllProductsQueryHandler(productRepository, mapper);
 
             // Act
             var result = await handler.Handle(new GetAllProductsQuery(), default);
