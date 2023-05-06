@@ -1,0 +1,29 @@
+@using Blackbird.Application.Dtos;
+
+@if (Product is null)
+{
+    <MudProgressCircular />
+}
+else
+{
+    <MudCard>
+        <MudCardMedia Image="@($"{Product.ImageUrl}")" />
+        <MudCardContent>
+            <MudText Typo="Typo.h5">@Product.Name</MudText>
+            <MudText Typo="Typo.body1">Price: @Product.Price</MudText>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="@AddToCart">Add to Cart</MudButton>
+        </MudCardActions>
+    </MudCard>
+}
+
+
+@code {
+    [Parameter] public ProductDto? Product { get; set; }
+
+    private void AddToCart()
+    {
+        // Implement the Add to Cart functionality here
+    }
+}

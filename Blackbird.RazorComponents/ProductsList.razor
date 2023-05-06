@@ -1,7 +1,8 @@
 ﻿@using Blackbird.Application.Dtos;
-@using Blackbird.RazorComponents.Interfaces
-@using MudBlazor;
+@using Blackbird.RazorComponents.Interfaces;
+@using MudBlazor
 @inject IProductService ProductService
+@inject IDialogService DialogService
 
 <MudContainer>
     <MudGrid>
@@ -24,7 +25,8 @@
                             <MudText Typo="Typo.body2">@product.Description</MudText>
                         </MudCardContent>
                         <MudCardActions>
-                            <MudButton Variant="Variant.Outlined" OnClick="@(() => ShowDetails(product))">View Details</MudButton>
+                            <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="@(() => ShowDetails(product))" Class="mr-2">View Details</MudButton>
+                            <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="@AddToCart">Add to Cart</MudButton>
                         </MudCardActions>
                     </MudCard>
                 </MudItem>
@@ -34,7 +36,7 @@
 </MudContainer>
 
 @code {
-    private List<ProductDto>? Products { get; set; }
+    private List<ProductDto> Products { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -43,6 +45,19 @@
 
     private void ShowDetails(ProductDto product)
     {
-        // Implement the method to show product details
+        var parameters = new DialogParameters { { "Product", product } };
+        var dialog = DialogService.Show<ProductDetailsCard>(
+            "Product Details",
+            parameters,
+            new DialogOptions {
+                MaxWidth = MaxWidth.Medium,
+                FullWidth=true, 
+                CloseButton=true
+            });
+    }
+
+    private void AddToCart()
+    {
+        // Implement the Add to Cart functionality here
     }
 }
