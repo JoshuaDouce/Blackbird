@@ -7,7 +7,7 @@ using MudBlazor;
 using MudBlazor.Services;
 using NSubstitute;
 
-namespace Blackbird.RazorComponents.Tests
+namespace Blackbird.RazorComponents.Tests.Components
 {
     public class ProductsListTests : TestContext
     {
