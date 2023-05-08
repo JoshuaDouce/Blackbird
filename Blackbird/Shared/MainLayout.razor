@@ -1,8 +1,9 @@
 ﻿@inherits LayoutComponentBase
 @using MudBlazor
 @using Blackbird.Themes
-
-
+@inject NavigationManager NavigationManager
+@inject Blackbird.RazorComponents.States.BasketState BasketState
+@implements IDisposable
 
 <MudThemeProvider Theme="BlackbirdTheme.Create()" />
 <MudDialogProvider />
@@ -18,6 +19,27 @@
     </MudItem>
 </MudContainer>
 
+<MudAppBar Bottom="true" Fixed="true" Color="Color.Primary" Elevation="1">
+    <MudBadge Content="@BasketState.BasketItemCount" Max="99" Overlap="true" Elevation="2">
+        <MudIconButton Color="Color.Inherit" Icon="@Icons.Material.Filled.ShoppingCart" OnClick="@NavigateToBasket"/>
+    </MudBadge>
+</MudAppBar>
+
 @code {
     private string AppName => "Blackbird";
+
+    protected override void OnInitialized()
+    {
+        BasketState.OnChange += StateHasChanged;
+    }
+
+    private void NavigateToBasket()
+    {
+        NavigationManager.NavigateTo("/basket");
+    }
+
+    public void Dispose()
+    {
+        BasketState.OnChange -= StateHasChanged;
+    }
 }

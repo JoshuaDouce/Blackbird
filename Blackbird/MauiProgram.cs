@@ -1,5 +1,6 @@
 ﻿using Blackbird.RazorComponents.Interfaces;
 using Blackbird.Services;
+using Blackbird.RazorComponents.States;
 using Microsoft.Extensions.Logging;
 using MudBlazor.Services;
 
@@ -20,6 +21,7 @@ public static class MauiProgram
 		builder.Services.AddMauiBlazorWebView();
         builder.Services.AddMudServices();
         builder.Services.AddSingleton<IProductService, ProductService>();
+        builder.Services.AddScoped<BasketState>();
 
         // Configure the HttpClient for your Web API
 #if DEBUG

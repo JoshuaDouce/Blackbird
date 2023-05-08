@@ -1,5 +1,6 @@
 ﻿using Blackbird.Application.Dtos;
 using Blackbird.RazorComponents.Interfaces;
+using Blackbird.RazorComponents.States;
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
 using MudBlazor;
@@ -17,7 +18,10 @@ namespace Blackbird.RazorComponents.Tests
             var productService = Substitute.For<IProductService>();
             productService.GetAllProductsAsync().Returns(GetTestProducts());
 
+            var basketState = new BasketState();
+
             Services.AddSingleton(productService);
+            Services.AddSingleton(basketState);
             Services.AddMudServices();
 
             // Act
@@ -34,6 +38,8 @@ namespace Blackbird.RazorComponents.Tests
                 Assert.Contains(product.ImageUrl, cards[i].Markup);
                 Assert.Contains(product.Description, cards[i].Markup);
                 Assert.Contains($"{product.Price}", cards[i].Markup);
+                Assert.Contains("View Details", cards[i].Markup);
+                Assert.NotNull(cards[i].FindComponent<AddToCartButton>());
             }
         }
 

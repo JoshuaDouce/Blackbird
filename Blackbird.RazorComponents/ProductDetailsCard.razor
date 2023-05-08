@@ -1,4 +1,6 @@
 @using Blackbird.Application.Dtos;
+@using Blackbird.RazorComponents;
+@inject Blackbird.RazorComponents.States.BasketState BasketState
 
 @if (Product is null)
 {
@@ -13,7 +15,7 @@ else
             <MudText Typo="Typo.body1">Price: @Product.Price</MudText>
         </MudCardContent>
         <MudCardActions>
-            <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="@AddToCart">Add to Cart</MudButton>
+            <AddToCartButton />
         </MudCardActions>
     </MudCard>
 }
@@ -21,9 +23,4 @@ else
 
 @code {
     [Parameter] public ProductDto? Product { get; set; }
-
-    private void AddToCart()
-    {
-        // Implement the Add to Cart functionality here
-    }
 }

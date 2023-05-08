@@ -3,6 +3,7 @@
 @using MudBlazor
 @inject IProductService ProductService
 @inject IDialogService DialogService
+@inject Blackbird.RazorComponents.States.BasketState BasketState
 
 <MudContainer>
     <MudGrid>
@@ -26,7 +27,7 @@
                         </MudCardContent>
                         <MudCardActions>
                             <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="@(() => ShowDetails(product))" Class="mr-2">View Details</MudButton>
-                            <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="@AddToCart">Add to Cart</MudButton>
+                            <AddToCartButton />
                         </MudCardActions>
                     </MudCard>
                 </MudItem>
@@ -54,10 +55,5 @@
                 FullWidth=true, 
                 CloseButton=true
             });
-    }
-
-    private void AddToCart()
-    {
-        // Implement the Add to Cart functionality here
     }
 }
