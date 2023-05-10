@@ -1,0 +1,11 @@
+@using Blackbird.Application.Dtos;
+@using MudBlazor
+@inject Blackbird.RazorComponents.States.BasketState BasketState
+
+<param name="Product" type="ProductDto" />
+
+<MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Primary" OnClick="@(() => BasketState.ClearItemFromBasket(Product))" />
+
+@code {
+    [Parameter] public ProductDto Product { get; set; }
+}

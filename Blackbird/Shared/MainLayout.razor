@@ -13,7 +13,7 @@
     <MudText Typo="Typo.h6">@AppName</MudText>
 </MudAppBar>
 
-<MudContainer Class="mt-16">
+<MudContainer Class="mt-16 mb-16">
     <MudItem xs="12">
         @Body
     </MudItem>
@@ -21,7 +21,7 @@
 
 <MudAppBar Bottom="true" Fixed="true" Color="Color.Primary" Elevation="1">
     <MudBadge Content="@BasketState.BasketItemCount" Max="99" Overlap="true" Elevation="2">
-        <MudIconButton Color="Color.Inherit" Icon="@Icons.Material.Filled.ShoppingCart" OnClick="@NavigateToBasket"/>
+        <MudIconButton OnClick="NavigateToBasket" Color="Color.Inherit" Icon="@Icons.Material.Filled.ShoppingCart" />
     </MudBadge>
 </MudAppBar>
 
@@ -33,13 +33,13 @@
         BasketState.OnChange += StateHasChanged;
     }
 
-    private void NavigateToBasket()
-    {
-        NavigationManager.NavigateTo("/basket");
-    }
-
     public void Dispose()
     {
         BasketState.OnChange -= StateHasChanged;
+    }
+
+    private void NavigateToBasket()
+    {
+        NavigationManager.NavigateTo("/basket");
     }
 }

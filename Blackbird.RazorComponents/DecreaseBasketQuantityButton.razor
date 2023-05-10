@@ -1,0 +1,8 @@
+@using Blackbird.Application.Dtos
+@inject Blackbird.RazorComponents.States.BasketState BasketState
+
+<MudIconButton Icon="@Icons.Material.Outlined.Remove" Color="Color.Primary" OnClick="@(() => BasketState.RemoveItemFromBasket(Product))" />
+
+@code {
+    [Parameter] public ProductDto Product { get; set; }
+}

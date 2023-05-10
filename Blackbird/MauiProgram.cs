@@ -33,7 +33,7 @@ public static class MauiProgram
         builder.Services.AddTransient<IProductService, ProductService>();
         builder.Services.AddSingleton(x => new HttpClient(x.GetRequiredService<HttpMessageHandler>())
         {
-            BaseAddress = new Uri("https://192.168.0.15:7104")
+            BaseAddress = new Uri("https://192.168.0.79:7104")
         });
 
 #if DEBUG

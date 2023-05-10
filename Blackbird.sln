@@ -30,9 +30,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blackbird.Application.Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blackbird.Application.Integration.Tests", "Blackbird.Application.Integration.Tests\Blackbird.Application.Integration.Tests.csproj", "{45CE7742-2D45-4291-8A36-E25C8C3538A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackbird.RazorComponents", "Blackbird.RazorComponents\Blackbird.RazorComponents.csproj", "{F1471C47-2AE1-4909-9CBF-A077002DE350}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blackbird.RazorComponents", "Blackbird.RazorComponents\Blackbird.RazorComponents.csproj", "{F1471C47-2AE1-4909-9CBF-A077002DE350}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackbird.RazorComponents.Tests", "Blackbird.RazorComponents.Tests\Blackbird.RazorComponents.Tests.csproj", "{3927876B-398A-4B68-B9DB-019A3885E12F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blackbird.RazorComponents.Tests", "Blackbird.RazorComponents.Tests\Blackbird.RazorComponents.Tests.csproj", "{3927876B-398A-4B68-B9DB-019A3885E12F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,7 +103,7 @@ Global
 		{3927876B-398A-4B68-B9DB-019A3885E12F} = {04A93AA1-49CA-4CEF-AC0E-D25BC6FBCAED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {34E93D85-6C6B-48E7-AF8F-3989190860E2}
 		        SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
+		SolutionGuid = {34E93D85-6C6B-48E7-AF8F-3989190860E2}
 	EndGlobalSection
 EndGlobal

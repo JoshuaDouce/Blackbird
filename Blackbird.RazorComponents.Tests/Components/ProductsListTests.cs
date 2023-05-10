@@ -39,7 +39,7 @@ namespace Blackbird.RazorComponents.Tests.Components
                 Assert.Contains(product.Description, cards[i].Markup);
                 Assert.Contains($"{product.Price}", cards[i].Markup);
                 Assert.Contains("View Details", cards[i].Markup);
-                Assert.NotNull(cards[i].FindComponent<AddToCartButton>());
+                Assert.NotNull(cards[i].FindComponent<AddToBasketButton>());
             }
         }
 

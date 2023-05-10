@@ -1,23 +1,53 @@
-﻿namespace Blackbird.RazorComponents.States
+﻿using Blackbird.Application.Dtos;
+
+namespace Blackbird.RazorComponents.States
 {
     public class BasketState
     {
         public event Action OnChange;
-        private int _basketItemCount;
 
-        public int BasketItemCount
+        public IList<ProductDto> BasketItems { get; private set; } = new List<ProductDto>();
+
+        public int BasketItemCount => BasketItems.Sum(x => x.Quantity);
+
+        public void AddToBasket(ProductDto product)
         {
-            get => _basketItemCount;
-            private set
+            var basketItem = BasketItems.FirstOrDefault(p => p.ProductId == product.ProductId);
+            if (basketItem == null)
             {
-                _basketItemCount = value;
-                NotifyStateChanged();
+                BasketItems.Add(product);
             }
+            else
+            {
+                basketItem.Quantity++;
+            }
+
+            NotifyStateChanged();
         }
 
-        public void IncrementBasketItemCount()
+        public void RemoveItemFromBasket(ProductDto product)
         {
-            BasketItemCount++;
+            var basketItem = BasketItems.FirstOrDefault(p => p.ProductId == product.ProductId);
+            if (basketItem == null || basketItem.Quantity == 1)
+            {
+                BasketItems.Remove(product);
+            }
+            else
+            {
+                basketItem.Quantity--;
+            }
+
+            NotifyStateChanged();
+        }
+
+        public void ClearItemFromBasket(ProductDto product)
+        {
+            var item = BasketItems.FirstOrDefault(x => x.ProductId == product.ProductId);
+            if (item != null)
+            {
+                BasketItems.Remove(item);
+                NotifyStateChanged();
+            }
         }
 
         private void NotifyStateChanged() => OnChange?.Invoke();

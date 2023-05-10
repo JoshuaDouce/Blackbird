@@ -1,0 +1,49 @@
+﻿@page "/basket"
+@using MudBlazor
+@using Blackbird.Application.Dtos
+@inject Blackbird.RazorComponents.States.BasketState BasketState
+
+<h3>Basket</h3>
+
+@if (BasketState.BasketItems.Count == 0)
+{
+    <MudText Typo="Typo.body1">Your basket is empty.</MudText>
+}
+else
+{
+    <MudGrid>
+        @foreach (var item in BasketState.BasketItems)
+        {
+            <MudItem xs="12" sm="6" md="4" lg="3">
+                <MudCard>
+                    <BasketProductSummary Product="item" />
+                </MudCard>
+            </MudItem>
+        }
+    </MudGrid>
+
+    <MudPaper Elevation="1" Square="true" Class="basket-total mb-16">
+        <MudText Typo="Typo.h6" Class="total-info">Grand Total: @((BasketState.BasketItems.Sum(x => x.Quantity * x.Price)).ToString("C"))</MudText>
+    </MudPaper>
+}
+
+@code{
+    protected override void OnInitialized()
+    {
+        BasketState.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        BasketState.OnChange -= StateHasChanged;
+    }
+}
+
+<style>
+    .basket-total {
+        margin-top: 2rem;
+        padding: 1rem;
+        display: flex;
+        justify-content: flex-end;
+    }
+</style>
