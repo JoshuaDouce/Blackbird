@@ -1,5 +1,6 @@
 ﻿using Blackbird.Application.Dtos;
 using Blackbird.Domain.Entities;
+using Blackbird.RazorComponents.Buttons;
 using Blackbird.RazorComponents.States;
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
@@ -42,6 +43,8 @@ namespace Blackbird.RazorComponents.Tests.Components
             // Assert
             Assert.Equal(product.Name, productName);
             Assert.Contains(product.Price.ToString(), productPrice);
+            Assert.NotNull(cut.FindComponent<AddToBasketButton>());
+            Assert.NotNull(cut.FindComponent<RemoveFromBasketButton>());
         }
     }
 }

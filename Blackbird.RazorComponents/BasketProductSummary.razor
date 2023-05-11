@@ -1,6 +1,6 @@
 @using Blackbird.Application.Dtos;
 @using MudBlazor
-@using Blackbird.RazorComponents
+@using Blackbird.RazorComponents.Buttons
 @inject Blackbird.RazorComponents.States.BasketState BasketState
 
 <MudCardContent>
@@ -10,10 +10,10 @@
     <MudText Typo="Typo.body1">Total: @((Product.Quantity * Product.Price).ToString("C"))</MudText>
         <MudGrid>
             <MudItem>
-                <IncreaseBasketQuantityButton Product="@Product" />
+                <AddToBasketButton Product="@Product" UseIconButton="true"/>
             </MudItem>
             <MudItem>
-                <DecreaseBasketQuantityButton Product="@Product" />
+                <RemoveFromBasketButton Product="@Product" UseIconButton="true"/>
             </MudItem>
             <MudItem>
                 <ClearFromBasketButton Product="@Product" />

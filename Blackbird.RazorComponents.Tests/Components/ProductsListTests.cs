@@ -1,6 +1,7 @@
 ﻿using Blackbird.Application.Dtos;
 using Blackbird.RazorComponents.Interfaces;
 using Blackbird.RazorComponents.States;
+using Blackbird.RazorComponents.Buttons;
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
 using MudBlazor;
@@ -38,8 +39,9 @@ namespace Blackbird.RazorComponents.Tests.Components
                 Assert.Contains(product.ImageUrl, cards[i].Markup);
                 Assert.Contains(product.Description, cards[i].Markup);
                 Assert.Contains($"{product.Price}", cards[i].Markup);
-                Assert.Contains("View Details", cards[i].Markup);
+                Assert.Contains("Details", cards[i].Markup);
                 Assert.NotNull(cards[i].FindComponent<AddToBasketButton>());
+                Assert.NotNull(cards[i].FindComponent<RemoveFromBasketButton>());
             }
         }
 

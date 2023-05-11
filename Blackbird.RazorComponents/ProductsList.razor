@@ -1,5 +1,6 @@
 ﻿@using Blackbird.Application.Dtos;
 @using Blackbird.RazorComponents.Interfaces;
+@using Blackbird.RazorComponents.Buttons;
 @using MudBlazor
 @inject IProductService ProductService
 @inject IDialogService DialogService
@@ -26,8 +27,9 @@
                             <MudText Typo="Typo.body2">@product.Description</MudText>
                         </MudCardContent>
                         <MudCardActions>
-                            <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="@(() => ShowDetails(product))" Class="mr-2">View Details</MudButton>
+                            <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="@(() => ShowDetails(product))" Class="mr-1 ml-1">Details</MudButton>
                             <AddToBasketButton Product="@product"/>
+                            <RemoveFromBasketButton Product="@product"/>
                         </MudCardActions>
                     </MudCard>
                 </MudItem>

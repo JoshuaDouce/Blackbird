@@ -1,5 +1,5 @@
 @using Blackbird.Application.Dtos;
-@using Blackbird.RazorComponents;
+@using Blackbird.RazorComponents.Buttons;
 @inject Blackbird.RazorComponents.States.BasketState BasketState
 
 @if (Product is null)
@@ -16,6 +16,7 @@ else
         </MudCardContent>
         <MudCardActions>
             <AddToBasketButton Product="@Product"/>
+            <RemoveFromBasketButton Product="@Product"/>
         </MudCardActions>
     </MudCard>
 }
