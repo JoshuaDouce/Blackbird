@@ -4,18 +4,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Blackbird.Persistence
+namespace Blackbird.Persistence;
+
+public static class PersistenceServiceRegistration
 {
-    public static class PersistenceServiceRegistration
+    public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
-        public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddDbContext<BlackbirdDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("BlackbirdConnectionString")));
+        services.AddDbContext<BlackbirdDbContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("BlackbirdConnectionString")));
 
-            services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
 
-            return services;
-        }
+        return services;
     }
 }

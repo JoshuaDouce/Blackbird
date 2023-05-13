@@ -5,30 +5,28 @@ using Bunit;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 
-namespace Blackbird.RazorComponents.Tests.Buttons
+namespace Blackbird.RazorComponents.Tests.Buttons;
+
+// RemoveFromBasketButtonTests.cs
+
+public class RemoveFromBasketButtonTests : TestContext
 {
-    // RemoveFromBasketButtonTests.cs
-
-    public class RemoveFromBasketButtonTests : TestContext
+    [Fact]
+    public void RemoveFromBasketButton_Click_RemovesItemFromBasket()
     {
-        [Fact]
-        public void RemoveFromBasketButton_Click_RemovesItemFromBasket()
-        {
-            // Arrange
-            var basketState = Substitute.For<IBasketState>();
-            var product = new ProductDto { ProductId = "1", Name = "Test Product", Price = 10 };
+        // Arrange
+        var basketState = Substitute.For<IBasketState>();
+        var product = new ProductDto { ProductId = "1", Name = "Test Product", Price = 10 };
 
-            Services.AddSingleton(basketState);
-            var cut = RenderComponent<RemoveFromBasketButton>(parameters => parameters
-                .Add(p => p.Product, product)
-            );
+        Services.AddSingleton(basketState);
+        var cut = RenderComponent<RemoveFromBasketButton>(parameters => parameters
+            .Add(p => p.Product, product)
+        );
 
-            // Act
-            cut.Find("button").Click();
+        // Act
+        cut.Find("button").Click();
 
-            // Assert
-            basketState.Received().RemoveProduct(product);
-        }
+        // Assert
+        basketState.Received().RemoveProduct(product);
     }
-
 }

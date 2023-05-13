@@ -5,47 +5,46 @@ using Bunit;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 
-namespace Blackbird.RazorComponents.Tests.Components
+namespace Blackbird.RazorComponents.Tests.Components;
+
+public class ProductDetailsCardTests
 {
-    public class ProductDetailsCardTests
+    private readonly TestContext _context;
+
+    public ProductDetailsCardTests()
     {
-        private readonly TestContext _context;
+        _context = new TestContext();
+        var basketState = Substitute.For<IBasketState>();
+        _context.Services.AddSingleton(basketState);
+    }
 
-        public ProductDetailsCardTests()
+    [Fact]
+    public void ProductDetailsCard_ShouldDisplayProductDetails()
+    {
+        // Arrange
+        var product = new ProductDto
         {
-            _context = new TestContext();
-            var basketState = Substitute.For<IBasketState>();
-            _context.Services.AddSingleton(basketState);
-        }
+            ProductId = "123",
+            Name = "Test Product",
+            Price = 10.99M,
+            ImageUrl = "https://example.com/image.jpg"
+        };
 
-        [Fact]
-        public void ProductDetailsCard_ShouldDisplayProductDetails()
+        var parameters = new ComponentParameter[]
         {
-            // Arrange
-            var product = new ProductDto
-            {
-                ProductId = "123",
-                Name = "Test Product",
-                Price = 10.99M,
-                ImageUrl = "https://example.com/image.jpg"
-            };
+            ComponentParameter.CreateParameter("Product", product)
+        };
 
-            var parameters = new ComponentParameter[]
-            {
-                ComponentParameter.CreateParameter("Product", product)
-            };
+        var cut = _context.RenderComponent<ProductDetailsCard>(parameters);
 
-            var cut = _context.RenderComponent<ProductDetailsCard>(parameters);
+        // Act
+        var productName = cut.Find("h5").TextContent;
+        var productPrice = cut.Find("p").TextContent;
 
-            // Act
-            var productName = cut.Find("h5").TextContent;
-            var productPrice = cut.Find("p").TextContent;
-
-            // Assert
-            Assert.Equal(product.Name, productName);
-            Assert.Contains(product.Price.ToString(), productPrice);
-            Assert.NotNull(cut.FindComponent<AddToBasketButton>());
-            Assert.NotNull(cut.FindComponent<RemoveFromBasketButton>());
-        }
+        // Assert
+        Assert.Equal(product.Name, productName);
+        Assert.Contains(product.Price.ToString(), productPrice);
+        Assert.NotNull(cut.FindComponent<AddToBasketButton>());
+        Assert.NotNull(cut.FindComponent<RemoveFromBasketButton>());
     }
 }

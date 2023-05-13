@@ -1,10 +1,9 @@
-﻿namespace Blackbird.Services
+﻿namespace Blackbird.Services;
+
+public class UnsafeHttpClientHandler : HttpClientHandler
 {
-    public class UnsafeHttpClientHandler : HttpClientHandler
+    public UnsafeHttpClientHandler()
     {
-        public UnsafeHttpClientHandler()
-        {
-            ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
-        }
+        ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
     }
 }

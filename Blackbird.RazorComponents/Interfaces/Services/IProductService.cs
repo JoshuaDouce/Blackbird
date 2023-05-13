@@ -1,9 +1,8 @@
 ﻿using Blackbird.Application.Dtos;
 
-namespace Blackbird.RazorComponents.Interfaces.Services
+namespace Blackbird.RazorComponents.Interfaces.Services;
+
+public interface IProductService
 {
-    public interface IProductService
-    {
-        Task<IEnumerable<ProductDto>> GetAllProductsAsync();
-    }
+    Task<IEnumerable<ProductDto>> GetAllProductsAsync();
 }

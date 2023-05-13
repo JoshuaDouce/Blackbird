@@ -1,13 +1,12 @@
 ﻿using Blackbird.Domain.Entities;
 
-namespace Blackbird.Application.Infrastructure.Persistence
+namespace Blackbird.Application.Infrastructure.Persistence;
+
+public interface IProductRepository
 {
-    public interface IProductRepository
-    {
-        Task<Product> GetByIdAsync(int id);
-        Task<IEnumerable<Product>> GetAllAsync();
-        Task<Product> AddAsync(Product product);
-        Task<Product> UpdateAsync(Product product);
-        Task DeleteAsync(Product product);
-    }
+    Task<Product> GetByIdAsync(int id);
+    Task<IEnumerable<Product>> GetAllAsync();
+    Task<Product> AddAsync(Product product);
+    Task<Product> UpdateAsync(Product product);
+    Task DeleteAsync(Product product);
 }

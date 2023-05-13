@@ -1,9 +1,8 @@
 ﻿using Blackbird.Application.Dtos;
 using MediatR;
 
-namespace Blackbird.Application.Features.Products.Queries
+namespace Blackbird.Application.Features.Products.Queries;
+
+public class GetAllProductsQuery : IRequest<List<ProductDto>>
 {
-    public class GetAllProductsQuery : IRequest<List<ProductDto>>
-    {
-    }
 }

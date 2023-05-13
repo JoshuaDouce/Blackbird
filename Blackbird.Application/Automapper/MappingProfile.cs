@@ -2,13 +2,12 @@
 using Blackbird.Application.Dtos;
 using Blackbird.Domain.Entities;
 
-namespace Blackbird.Application.Automapper
+namespace Blackbird.Application.Automapper;
+
+public class MappingProfile : Profile
 {
-    public class MappingProfile : Profile
+    public MappingProfile()
     {
-        public MappingProfile()
-        {
-            CreateMap<Product, ProductDto>();
-        }
+        CreateMap<Product, ProductDto>();
     }
 }

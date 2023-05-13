@@ -6,36 +6,35 @@ using Blackbird.Persistence;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Blackbird.Application.Integration.Tests.Features.Products.Queries
+namespace Blackbird.Application.Integration.Tests.Features.Products.Queries;
+
+public class GetAllProductsTests : IClassFixture<TestFixture>
 {
-    public class GetAllProductsTests : IClassFixture<TestFixture>
+    private readonly TestFixture _fixture;
+
+    public GetAllProductsTests(TestFixture fixture)
     {
-        private readonly TestFixture _fixture;
+        _fixture = fixture;
+    }
 
-        public GetAllProductsTests(TestFixture fixture)
-        {
-            _fixture = fixture;
-        }
+    [Fact]
+    public async Task Handle_ShouldReturnAllProducts()
+    {
+        // Arrange
+        using var scope = _fixture.ServiceProvider.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<BlackbirdDbContext>();
 
-        [Fact]
-        public async Task Handle_ShouldReturnAllProducts()
-        {
-            // Arrange
-            using var scope = _fixture.ServiceProvider.CreateScope();
-            var dbContext = scope.ServiceProvider.GetRequiredService<BlackbirdDbContext>();
+        var mappingConfig = new MapperConfiguration(mc => mc.AddProfile(new MappingProfile()));
+        var mapper = mappingConfig.CreateMapper();
 
-            var mappingConfig = new MapperConfiguration(mc => mc.AddProfile(new MappingProfile()));
-            var mapper = mappingConfig.CreateMapper();
+        var productRepository = scope.ServiceProvider.GetRequiredService<IProductRepository>();
+        var handler = new GetAllProductsQueryHandler(productRepository, mapper);
 
-            var productRepository = scope.ServiceProvider.GetRequiredService<IProductRepository>();
-            var handler = new GetAllProductsQueryHandler(productRepository, mapper);
+        // Act
+        var result = await handler.Handle(new GetAllProductsQuery(), default);
 
-            // Act
-            var result = await handler.Handle(new GetAllProductsQuery(), default);
-
-            // Assert
-            result.Should().NotBeNull();
-            result.Should().HaveCount(10);
-        }
+        // Assert
+        result.Should().NotBeNull();
+        result.Should().HaveCount(10);
     }
 }
