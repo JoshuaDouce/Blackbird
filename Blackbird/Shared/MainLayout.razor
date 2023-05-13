@@ -2,7 +2,7 @@
 @using MudBlazor
 @using Blackbird.Themes
 @inject NavigationManager NavigationManager
-@inject Blackbird.RazorComponents.States.BasketState BasketState
+@inject Blackbird.RazorComponents.Interfaces.States.IBasketState BasketState
 @implements IDisposable
 
 <MudThemeProvider Theme="BlackbirdTheme.Create()" />
@@ -20,7 +20,7 @@
 </MudContainer>
 
 <MudAppBar Bottom="true" Fixed="true" Color="Color.Primary" Elevation="1">
-    <MudBadge Content="@BasketState.BasketItemCount" Max="99" Overlap="true" Elevation="2">
+    <MudBadge Content="@BasketState.BasketItemCount()" Max="99" Overlap="true" Elevation="2">
         <MudIconButton OnClick="NavigateToBasket" Color="Color.Inherit" Icon="@Icons.Material.Filled.ShoppingCart" />
     </MudBadge>
 </MudAppBar>

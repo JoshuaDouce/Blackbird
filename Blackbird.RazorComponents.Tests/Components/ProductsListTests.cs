@@ -1,12 +1,12 @@
 ﻿using Blackbird.Application.Dtos;
-using Blackbird.RazorComponents.Interfaces;
-using Blackbird.RazorComponents.States;
 using Blackbird.RazorComponents.Buttons;
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
 using MudBlazor;
 using MudBlazor.Services;
 using NSubstitute;
+using Blackbird.RazorComponents.Interfaces.Services;
+using Blackbird.RazorComponents.Interfaces.States;
 
 namespace Blackbird.RazorComponents.Tests.Components
 {
@@ -19,7 +19,7 @@ namespace Blackbird.RazorComponents.Tests.Components
             var productService = Substitute.For<IProductService>();
             productService.GetAllProductsAsync().Returns(GetTestProducts());
 
-            var basketState = new BasketState();
+            var basketState = Substitute.For<IBasketState>();
 
             Services.AddSingleton(productService);
             Services.AddSingleton(basketState);

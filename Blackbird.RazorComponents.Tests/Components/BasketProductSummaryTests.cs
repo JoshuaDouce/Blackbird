@@ -1,16 +1,11 @@
 ﻿using Blackbird.Application.Dtos;
-using Blackbird.Domain.Entities;
 using Blackbird.RazorComponents.Buttons;
-using Blackbird.RazorComponents.States;
+using Blackbird.RazorComponents.Interfaces.States;
 using Bunit;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using MudBlazor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NSubstitute;
 
 namespace Blackbird.RazorComponents.Tests.Components
 {
@@ -22,8 +17,8 @@ namespace Blackbird.RazorComponents.Tests.Components
         public void BasketProductSummary_DisplaysCorrectInfo()
         {
             // Arrange
-            var basketState = new BasketState();
-            Services.AddSingleton<BasketState>(basketState);
+            var basketState = Substitute.For<IBasketState>();
+            Services.AddSingleton(basketState);
 
             var basketItem = new ProductDto
             {

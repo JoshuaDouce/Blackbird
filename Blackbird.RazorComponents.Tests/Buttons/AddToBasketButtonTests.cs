@@ -1,21 +1,22 @@
 ﻿using Blackbird.Application.Dtos;
-using Blackbird.RazorComponents.States;
+using Blackbird.RazorComponents.Interfaces.States;
 using Blackbird.RazorComponents.Buttons;
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
 using MudBlazor;
+using NSubstitute;
 
 namespace Blackbird.RazorComponents.Tests.Buttons
 {
     public class AddToCartButtonTests
     {
         private readonly TestContext _ctx;
-        private readonly BasketState _basketState;
+        private readonly IBasketState _basketState;
 
         public AddToCartButtonTests()
         {
+            _basketState = Substitute.For<IBasketState>();
             _ctx = new TestContext();
-            _basketState = new BasketState();
             _ctx.Services.AddSingleton(_basketState);
         }
 
@@ -38,8 +39,7 @@ namespace Blackbird.RazorComponents.Tests.Buttons
 
             // Assert
             Assert.NotNull(cut.FindComponent<MudButton>());
-            Assert.Single(_basketState.BasketItems);
-            Assert.Equal(product.ProductId, _basketState.BasketItems.First().ProductId);
+            _basketState.Received(1).AddProduct(product);
         }
 
         [Fact]
@@ -62,9 +62,7 @@ namespace Blackbird.RazorComponents.Tests.Buttons
 
             // Assert
             Assert.NotNull(cut.FindComponent<MudIconButton>());
-            Assert.Single(_basketState.BasketItems);
-            Assert.Equal(product.ProductId, _basketState.BasketItems.First().ProductId);
-            
+            _basketState.Received(1).AddProduct(product);
         }
     }
 }

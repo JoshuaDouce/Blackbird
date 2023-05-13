@@ -1,6 +1,6 @@
 ﻿using Blackbird.Application.Dtos;
 
-namespace Blackbird.RazorComponents.Interfaces
+namespace Blackbird.RazorComponents.Interfaces.Services
 {
     public interface IProductService
     {

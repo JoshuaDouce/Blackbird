@@ -1,21 +1,24 @@
 ﻿using Blackbird.Application.Dtos;
+using Blackbird.RazorComponents.Interfaces.States;
 
 namespace Blackbird.RazorComponents.States
 {
-    public class BasketState
+    public class BasketState : IBasketState
     {
         public event Action OnChange;
 
-        public IList<ProductDto> BasketItems { get; private set; } = new List<ProductDto>();
+        private readonly IList<ProductDto> BasketProducts = new List<ProductDto>();
 
-        public int BasketItemCount => BasketItems.Sum(x => x.Quantity);
+        public int BasketItemCount() => BasketProducts.Sum(x => x.Quantity);
 
-        public void AddToBasket(ProductDto product)
+        public IList<ProductDto> GetProducts() => BasketProducts;
+
+        public void AddProduct(ProductDto product)
         {
-            var basketItem = BasketItems.FirstOrDefault(p => p.ProductId == product.ProductId);
+            var basketItem = BasketProducts.FirstOrDefault(p => p.ProductId == product.ProductId);
             if (basketItem == null)
             {
-                BasketItems.Add(product);
+                BasketProducts.Add(product);
             }
             else
             {
@@ -25,12 +28,12 @@ namespace Blackbird.RazorComponents.States
             NotifyStateChanged();
         }
 
-        public void RemoveItemFromBasket(ProductDto product)
+        public void RemoveProduct(ProductDto product)
         {
-            var basketItem = BasketItems.FirstOrDefault(p => p.ProductId == product.ProductId);
+            var basketItem = BasketProducts.FirstOrDefault(p => p.ProductId == product.ProductId);
             if (basketItem == null || basketItem.Quantity == 1)
             {
-                BasketItems.Remove(product);
+                BasketProducts.Remove(product);
             }
             else
             {
@@ -40,12 +43,12 @@ namespace Blackbird.RazorComponents.States
             NotifyStateChanged();
         }
 
-        public void ClearItemFromBasket(ProductDto product)
+        public void ClearProduct(ProductDto product)
         {
-            var item = BasketItems.FirstOrDefault(x => x.ProductId == product.ProductId);
+            var item = BasketProducts.FirstOrDefault(x => x.ProductId == product.ProductId);
             if (item != null)
             {
-                BasketItems.Remove(item);
+                BasketProducts.Remove(item);
                 NotifyStateChanged();
             }
         }

@@ -1,9 +1,9 @@
 ﻿using Blackbird.Application.Dtos;
-using Blackbird.Domain.Entities;
 using Blackbird.RazorComponents.Buttons;
-using Blackbird.RazorComponents.States;
+using Blackbird.RazorComponents.Interfaces.States;
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
+using NSubstitute;
 
 namespace Blackbird.RazorComponents.Tests.Components
 {
@@ -14,7 +14,8 @@ namespace Blackbird.RazorComponents.Tests.Components
         public ProductDetailsCardTests()
         {
             _context = new TestContext();
-            _context.Services.AddSingleton<BasketState>();
+            var basketState = Substitute.For<IBasketState>();
+            _context.Services.AddSingleton(basketState);
         }
 
         [Fact]

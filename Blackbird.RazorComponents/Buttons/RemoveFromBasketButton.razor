@@ -1,5 +1,5 @@
 @using Blackbird.Application.Dtos
-@inject Blackbird.RazorComponents.States.BasketState BasketState
+@inject Blackbird.RazorComponents.Interfaces.States.IBasketState BasketState
 
 @if (UseIconButton)
 {
@@ -17,6 +17,6 @@ else
 
     private void RemoveItemFromBasket()
     {
-        BasketState.RemoveItemFromBasket(Product);
+        BasketState.RemoveProduct(Product);
     }
 }

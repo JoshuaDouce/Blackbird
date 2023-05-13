@@ -1,8 +1,9 @@
-﻿using Blackbird.RazorComponents.Interfaces;
-using Blackbird.Services;
+﻿using Blackbird.Services;
 using Blackbird.RazorComponents.States;
 using Microsoft.Extensions.Logging;
 using MudBlazor.Services;
+using Blackbird.RazorComponents.Interfaces.Services;
+using Blackbird.RazorComponents.Interfaces.States;
 
 namespace Blackbird;
 
@@ -21,7 +22,7 @@ public static class MauiProgram
 		builder.Services.AddMauiBlazorWebView();
         builder.Services.AddMudServices();
         builder.Services.AddSingleton<IProductService, ProductService>();
-        builder.Services.AddScoped<BasketState>();
+        builder.Services.AddScoped<IBasketState, BasketState>();
 
         // Configure the HttpClient for your Web API
 #if DEBUG
@@ -33,7 +34,7 @@ public static class MauiProgram
         builder.Services.AddTransient<IProductService, ProductService>();
         builder.Services.AddSingleton(x => new HttpClient(x.GetRequiredService<HttpMessageHandler>())
         {
-            BaseAddress = new Uri("https://192.168.0.79:7104")
+            BaseAddress = new Uri("https://192.168.0.15:7104")
         });
 
 #if DEBUG

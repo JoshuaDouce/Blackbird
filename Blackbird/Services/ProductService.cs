@@ -1,5 +1,5 @@
 ﻿using Blackbird.Application.Dtos;
-using Blackbird.RazorComponents.Interfaces;
+using Blackbird.RazorComponents.Interfaces.Services;
 using System.Net.Http.Json;
 
 namespace Blackbird.Services

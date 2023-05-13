@@ -1,10 +1,11 @@
 ﻿@using Blackbird.Application.Dtos;
 @using Blackbird.RazorComponents.Interfaces;
 @using Blackbird.RazorComponents.Buttons;
+@using Blackbird.RazorComponents.Interfaces.Services;
 @using MudBlazor
 @inject IProductService ProductService
 @inject IDialogService DialogService
-@inject Blackbird.RazorComponents.States.BasketState BasketState
+@inject Blackbird.RazorComponents.Interfaces.States.IBasketState BasketState
 
 <MudContainer>
     <MudGrid>

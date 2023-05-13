@@ -6,7 +6,7 @@ namespace Blackbird.RazorComponents.Tests.States
 {
     public class BasketStateTests
     {
-        private BasketState _basketState;
+        private readonly BasketState _basketState;
 
         public BasketStateTests()
         {
@@ -20,11 +20,11 @@ namespace Blackbird.RazorComponents.Tests.States
             var product = new ProductDto { ProductId = "1", Name = "Test Product", Price = 10 };
 
             // Act
-            _basketState.AddToBasket(product);
+            _basketState.AddProduct(product);
 
             // Assert
-            _basketState.BasketItems.Should().ContainSingle();
-            _basketState.BasketItemCount.Should().Be(1);
+            _basketState.GetProducts().Should().ContainSingle();
+            _basketState.BasketItemCount().Should().Be(1);
         }
 
         [Theory]
@@ -35,17 +35,17 @@ namespace Blackbird.RazorComponents.Tests.States
         {
             // Arrange
             var product = new ProductDto { ProductId = "1", Name = "Test Product", Price = 10, Quantity = initialQuantity };
-            _basketState.BasketItems.Add(product);
+            _basketState.GetProducts().Add(product);
 
             // Act
             for (int i = 0; i < timesToAdd; i++)
             {
-                _basketState.AddToBasket(product);
+                _basketState.AddProduct(product);
             }
 
             // Assert
-            _basketState.BasketItems.Should().ContainSingle();
-            _basketState.BasketItemCount.Should().Be(expectedQuantity);
+            _basketState.GetProducts().Should().ContainSingle();
+            _basketState.BasketItemCount().Should().Be(expectedQuantity);
         }
 
         [Fact]
@@ -54,13 +54,13 @@ namespace Blackbird.RazorComponents.Tests.States
             // Arrange
             var basketState = new BasketState();
             var product = new ProductDto { ProductId = "1", Name = "Test Product", Price = 10, Quantity = 1 };
-            basketState.AddToBasket(product);
+            basketState.AddProduct(product);
 
             // Act
-            basketState.RemoveItemFromBasket(product);
+            basketState.RemoveProduct(product);
 
             // Assert
-            Assert.Empty(basketState.BasketItems);
+            Assert.Empty(basketState.GetProducts());
         }
 
         [Fact]
@@ -69,14 +69,14 @@ namespace Blackbird.RazorComponents.Tests.States
             // Arrange
             var basketState = new BasketState();
             var product = new ProductDto { ProductId = "1", Name = "Test Product", Price = 10, Quantity = 2 };
-            basketState.AddToBasket(product);
+            basketState.AddProduct(product);
 
             // Act
-            basketState.RemoveItemFromBasket(product);
+            basketState.RemoveProduct(product);
 
             // Assert
-            Assert.Single(basketState.BasketItems);
-            Assert.Equal(1, basketState.BasketItems[0].Quantity);
+            Assert.Single(basketState.GetProducts());
+            Assert.Equal(1, basketState.GetProducts()[0].Quantity);
         }
 
         [Fact]
@@ -86,16 +86,16 @@ namespace Blackbird.RazorComponents.Tests.States
             var basketState = new BasketState();
             var product1 = new ProductDto { ProductId = "1", Name = "Test Product 1", Price = 10, Quantity = 1 };
             var product2 = new ProductDto { ProductId = "2", Name = "Test Product 2", Price = 20, Quantity = 1 };
-            basketState.AddToBasket(product1);
-            basketState.AddToBasket(product2);
+            basketState.AddProduct(product1);
+            basketState.AddProduct(product2);
 
             // Act
-            basketState.ClearItemFromBasket(product1);
+            basketState.ClearProduct(product1);
 
             // Assert
-            Assert.Single(basketState.BasketItems);
-            Assert.DoesNotContain(product1, basketState.BasketItems);
-            Assert.Contains(product2, basketState.BasketItems);
+            Assert.Single(basketState.GetProducts());
+            Assert.DoesNotContain(product1, basketState.GetProducts());
+            Assert.Contains(product2, basketState.GetProducts());
         }
 
     }

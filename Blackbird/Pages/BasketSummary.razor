@@ -1,18 +1,18 @@
 ﻿@page "/basket"
 @using MudBlazor
 @using Blackbird.Application.Dtos
-@inject Blackbird.RazorComponents.States.BasketState BasketState
+@inject Blackbird.RazorComponents.Interfaces.States.IBasketState BasketState
 
 <h3>Basket</h3>
 
-@if (BasketState.BasketItems.Count == 0)
+@if (BasketState.GetProducts().Count == 0)
 {
     <MudText Typo="Typo.body1">Your basket is empty.</MudText>
 }
 else
 {
     <MudGrid>
-        @foreach (var item in BasketState.BasketItems)
+        @foreach (var item in BasketState.GetProducts())
         {
             <MudItem xs="12" sm="6" md="4" lg="3">
                 <MudCard>
@@ -23,7 +23,7 @@ else
     </MudGrid>
 
     <MudPaper Elevation="1" Square="true" Class="basket-total mb-16">
-        <MudText Typo="Typo.h6" Class="total-info">Grand Total: @((BasketState.BasketItems.Sum(x => x.Quantity * x.Price)).ToString("C"))</MudText>
+        <MudText Typo="Typo.h6" Class="total-info">Grand Total: @((BasketState.GetProducts().Sum(x => x.Quantity * x.Price)).ToString("C"))</MudText>
     </MudPaper>
 }
 
