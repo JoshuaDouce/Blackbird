@@ -1,6 +1,5 @@
 ﻿using Blackbird.Application.Infrastructure.Persistence;
-using Blackbird.Infrastructure;
-using Blackbird.Infrastructure.Repositories;
+using Blackbird.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

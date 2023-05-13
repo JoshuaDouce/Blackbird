@@ -2,7 +2,7 @@
 using Blackbird.Application.Automapper;
 using Blackbird.Application.Features.Products.Queries;
 using Blackbird.Application.Infrastructure.Persistence;
-using Blackbird.Infrastructure;
+using Blackbird.Persistence;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 

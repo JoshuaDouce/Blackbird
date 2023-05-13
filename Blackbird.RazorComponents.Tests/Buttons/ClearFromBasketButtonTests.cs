@@ -19,7 +19,7 @@ namespace Blackbird.RazorComponents.Tests.Buttons
             var product = new ProductDto { ProductId = "1", Name = "Test Product", Price = 10 };
 
             Services.AddSingleton(basketState);
-            var cut = RenderComponent<ClearFromBasketButton>(parameters => 
+            var cut = RenderComponent<ClearFromBasketButton>(parameters =>
                 parameters.Add(P => P.Product, product));
 
             // Act

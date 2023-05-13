@@ -2,7 +2,7 @@
 using Blackbird.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blackbird.Infrastructure.Repositories
+namespace Blackbird.Persistence.Repositories
 {
     public class ProductRepository : IProductRepository
     {

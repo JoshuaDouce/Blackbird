@@ -1,25 +1,25 @@
-﻿using Blackbird.Services;
+﻿using Blackbird.RazorComponents.Interfaces.Services;
+using Blackbird.RazorComponents.Interfaces.States;
 using Blackbird.RazorComponents.States;
+using Blackbird.Services;
 using Microsoft.Extensions.Logging;
 using MudBlazor.Services;
-using Blackbird.RazorComponents.Interfaces.Services;
-using Blackbird.RazorComponents.Interfaces.States;
 
 namespace Blackbird;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-			});
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+            });
 
-		builder.Services.AddMauiBlazorWebView();
+        builder.Services.AddMauiBlazorWebView();
         builder.Services.AddMudServices();
         builder.Services.AddSingleton<IProductService, ProductService>();
         builder.Services.AddScoped<IBasketState, BasketState>();
@@ -39,9 +39,9 @@ public static class MauiProgram
 
 #if DEBUG
         builder.Services.AddBlazorWebViewDeveloperTools();
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
-		return builder.Build();
-	}
+        return builder.Build();
+    }
 }

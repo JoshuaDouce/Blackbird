@@ -1,6 +1,5 @@
 using Blackbird.Application;
 using Blackbird.Application.Features.Products.Queries;
-using Blackbird.Infrastructure;
 using Blackbird.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

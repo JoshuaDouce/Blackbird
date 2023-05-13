@@ -1,7 +1,7 @@
 ﻿using Blackbird.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blackbird.Infrastructure
+namespace Blackbird.Persistence
 {
     public class BlackbirdDbContext : DbContext
     {

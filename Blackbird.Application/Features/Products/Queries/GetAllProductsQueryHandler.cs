@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Blackbird.Application.Dtos;
 using Blackbird.Application.Infrastructure.Persistence;
-using Blackbird.Domain.Entities;
 using MediatR;
 
 namespace Blackbird.Application.Features.Products.Queries

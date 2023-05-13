@@ -1,9 +1,8 @@
 ﻿using Blackbird.Application.Infrastructure.Persistence;
-using Blackbird.Infrastructure;
-using Blackbird.Infrastructure.Repositories;
+using Blackbird.Persistence;
+using Blackbird.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace Blackbird.Application.Integration.Tests
 {

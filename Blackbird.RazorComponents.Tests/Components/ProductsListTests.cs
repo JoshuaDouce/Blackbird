@@ -1,12 +1,12 @@
 ﻿using Blackbird.Application.Dtos;
 using Blackbird.RazorComponents.Buttons;
+using Blackbird.RazorComponents.Interfaces.Services;
+using Blackbird.RazorComponents.Interfaces.States;
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
 using MudBlazor;
 using MudBlazor.Services;
 using NSubstitute;
-using Blackbird.RazorComponents.Interfaces.Services;
-using Blackbird.RazorComponents.Interfaces.States;
 
 namespace Blackbird.RazorComponents.Tests.Components
 {
