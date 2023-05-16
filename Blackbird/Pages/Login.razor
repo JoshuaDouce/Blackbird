@@ -1,0 +1,19 @@
+@page "/login"
+
+<MudPaper Elevation="2" Square="false" Class="pa-4 mt-4">
+    <MudText Typo="Typo.h6" Align="Align.Center">Login</MudText>
+    <MudTextField @bind-Value="username" Label="Username" Required="true" Class="mt-4"></MudTextField>
+    <MudTextField @bind-Value="password" Label="Password" Required="true" Type="InputType.Password" Class="mt-4"></MudTextField>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-4" OnClick="TryLogin">Login</MudButton>
+</MudPaper>
+
+@code {
+    private string username;
+    private string password;
+
+    private void TryLogin()
+    {
+        // Implement your authentication logic here
+        Console.WriteLine($"Username: {username}, Password: {password}");
+    }
+}

@@ -7,14 +7,16 @@
 @inject IDialogService DialogService
 @inject Blackbird.RazorComponents.Interfaces.States.IBasketState BasketState
 
-<MudContainer>
-    <MudGrid>
-        @if (Products == null)
-        {
-            <MudProgressCircular />
-        }
-        else
-        {
+<MudContainer Style="height: 100%;"> 
+    @if (Products == null)
+    {
+        <MudContainer Style="height: 100%;" Class="d-flex align-content-center justify-center">
+            <MudProgressCircular Indeterminate="true" Color="Color.Primary" Class="align-self-center" />
+        </MudContainer>
+    }
+    else
+    {
+        <MudGrid>
             @foreach (var product in Products)
             {
                 <MudItem xs="12" sm="6" md="4" lg="3">
@@ -35,8 +37,8 @@
                     </MudCard>
                 </MudItem>
             }
-        }
-    </MudGrid>
+        </MudGrid>
+    }
 </MudContainer>
 
 @code {

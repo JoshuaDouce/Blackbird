@@ -10,20 +10,24 @@
 <MudSnackbarProvider />
 
 <MudAppBar Color="Color.Primary" Elevation="1">
+    <MudIconButton Icon="@Icons.Material.Filled.Menu" OnClick="TogglePage" />
     <MudText Typo="Typo.h6">@AppName</MudText>
 </MudAppBar>
 
-<MudContainer Class="mt-16 mb-16">
-    <MudItem xs="12">
+<MudContainer Class="mt-16 mb-16" Style="height: 90%;">
+    <MudItem xs="12" Style="height: 100%;">
         @Body
     </MudItem>
 </MudContainer>
 
-<MudAppBar Bottom="true" Fixed="true" Color="Color.Primary" Elevation="1">
-    <MudBadge Content="@BasketState.BasketItemCount()" Max="99" Overlap="true" Elevation="2">
-        <MudIconButton OnClick="NavigateToBasket" Color="Color.Inherit" Icon="@Icons.Material.Filled.ShoppingCart" />
-    </MudBadge>
-</MudAppBar>
+@if (!_showLoginPage)
+{
+    <MudAppBar Bottom="true" Fixed="true" Color="Color.Primary" Elevation="1">
+        <MudBadge Content="@BasketState.BasketItemCount()" Max="99" Overlap="true" Elevation="2">
+            <MudIconButton OnClick="NavigateToBasket" Color="Color.Inherit" Icon="@Icons.Material.Filled.ShoppingCart" />
+        </MudBadge>
+    </MudAppBar>
+}
 
 @code {
     private string AppName => "Blackbird";
@@ -41,5 +45,21 @@
     private void NavigateToBasket()
     {
         NavigationManager.NavigateTo("/basket");
+    }
+
+    private bool _showLoginPage = false;
+
+    private void TogglePage()
+    {
+        _showLoginPage = !_showLoginPage;
+
+        if (_showLoginPage)
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+        else
+        {
+            NavigationManager.NavigateTo("/");
+        }
     }
 }
